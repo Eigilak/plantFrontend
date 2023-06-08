@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CreateModal extends StatelessWidget {
-  const CreateModal({
+class CreateUpdateModalContainer extends StatelessWidget {
+  const CreateUpdateModalContainer({
     super.key,
   });
 

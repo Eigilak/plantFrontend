@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../components/create_modal.dart';
+import 'BottomSheetContainer.dart';
 
-class CreatePlantScreen extends StatelessWidget {
-  const CreatePlantScreen({super.key});
+class EditPlantButton extends StatelessWidget {
+  const EditPlantButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CreatePlantScreen extends StatelessWidget {
           showModalBottomSheet<void>(
             context: context,
             builder: (BuildContext context) {
-              return CreateModal();
+              return CreateUpdateModalContainer();
             },
           );
         },

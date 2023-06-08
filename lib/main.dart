@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import 'Screens/plants_screen.dart';
+import 'Screens/plantsScreen.dart';
 
 final HttpLink httpLink = HttpLink('http://localhost:3000/graphql');
 

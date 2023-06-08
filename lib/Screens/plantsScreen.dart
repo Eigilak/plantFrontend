@@ -1,6 +1,8 @@
-import 'package:doubble_demo/Screens/plant_screen.dart';
+import 'package:doubble_demo/Screens/plantScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
+import '../components/BottomSheetContainer.dart';
 
 const String GET_PLANTS = '''
 {
@@ -79,7 +81,14 @@ class PlantsScreen extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         // The read method is a utility to read a provider without listening to it
-        onPressed: () => {print('Add plant')},
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return CreateUpdateModalContainer();
+            },
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );

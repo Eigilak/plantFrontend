@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import 'create_plant_screen.dart';
+import '../components/EditPlantButton.dart';
 
 const String GET_PLANT = '''
 query getPlant(\$id: String!){
@@ -65,7 +65,7 @@ class PlantScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold)))),
                   Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: CreatePlantScreen(),
+                    child: EditPlantButton(),
                   ),
                 ],
               );

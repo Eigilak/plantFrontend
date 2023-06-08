@@ -4,7 +4,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 import 'Screens/plants_screen.dart';
 
-
 final HttpLink httpLink = HttpLink('http://localhost:3000/graphql');
 
 final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
@@ -13,8 +12,6 @@ final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
     cache: GraphQLCache(),
   ),
 );
-
-
 
 void main() {
   runApp(
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return GraphQLProvider(
       client: client,
       child: CacheProvider(

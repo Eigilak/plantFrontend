@@ -1,8 +1,6 @@
 import 'package:doubble_demo/Screens/plant_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 
 const String GET_PLANTS = '''
 {
@@ -15,7 +13,6 @@ const String GET_PLANTS = '''
 ''';
 
 class PlantsScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +23,8 @@ class PlantsScreen extends StatelessWidget {
       ),
       body: Query(
           options: QueryOptions(
-              document: gql(GET_PLANTS),
-              ),
+            document: gql(GET_PLANTS),
+          ),
           builder: (result, {fetchMore, refetch}) {
             if (result.isLoading) {
               return const Center(
@@ -46,34 +43,35 @@ class PlantsScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final plant = plants![index];
                 final name = plant['name'];
-                final photo = plant['picture'] ?? 'https://networkofnature.org/species/images/image-coming-soon.png';
+                final photo = plant['picture'] ??
+                    'https://networkofnature.org/species/images/image-coming-soon.png';
                 return Column(
                   children: <Widget>[
                     InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PlantScreen(plantId: plant['id'])),
-                        );
-                      },
-                      child: Container(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          margin: EdgeInsets.only(bottom: 10.0, top: 10.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(photo)
-                              )
-                          ),
-                          alignment: Alignment.bottomCenter,
-                          child: Padding(
-                              padding: EdgeInsets.only(bottom: 10.0),
-                              child: Text(name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-                          )
-                      )
-                    ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PlantScreen(plantId: plant['id'])),
+                          );
+                        },
+                        child: Container(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: EdgeInsets.only(bottom: 10.0, top: 10.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(photo))),
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                                padding: EdgeInsets.only(bottom: 10.0),
+                                child: Text(name,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold))))),
                   ],
                 );
               },
@@ -81,7 +79,7 @@ class PlantsScreen extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         // The read method is a utility to read a provider without listening to it
-        onPressed: () => { print('Add plant')},
+        onPressed: () => {print('Add plant')},
         child: const Icon(Icons.add),
       ),
     );
